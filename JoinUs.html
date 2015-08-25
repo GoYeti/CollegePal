@@ -146,7 +146,6 @@
 			</div>
 		</div>
 	</div>
-	<form>
 		<div class="jumbotron" id="deviceRequired">
 			<div class="container" style="background-color: rgba(128, 128, 128, 0.33);width:830px;border-radius:15px;padding:3%;color:wheat">
 				<div id="tableApply">
@@ -165,24 +164,24 @@
 							<td>出生年月日</td>
 						</tr>
 						<tr>
-							<td><input class="border" style="width: 80%"></input></td>
-							<td><input class="border" style="width: 90%"></input></td>
-							<td><input class="border" style="width: 70%"></input></td>
-							<td><input class="border" style="width: 83%"></input></td>
+							<td><input class="border" style="width: 80%" id="ftName"></input></td>
+							<td><input class="border" style="width: 90%" id="ltName"></input></td>
+							<td><input class="border" style="width: 70%" id="sex"></input></td>
+							<td><input class="border" style="width: 83%" id="birthday"></input></td>
 						</tr>
 						<tr>
 							<td colspan="4">Email</td>
 						</tr>
 						<tr>
-							<td colspan="4"><input class="border" style="width: 83%"></input></td>
+							<td colspan="4"><input class="border" style="width: 83%" id="email"></input></td>
 						</tr>
 						<tr>
 							<td colspan="3">学校</td>
 							<td>年级</td>
 						</tr>
 						<tr>
-							<td colspan="3"><input class="border" style="width: 90%"></input></td>
-							<td><input class="border" style="width: 83%"></input></td>
+							<td colspan="3"><input class="border" style="width: 90%" id="school"></input></td>
+							<td><input class="border" style="width: 83%" id="grade"></input></td>
 						</tr>
 					</table>
 					<table>
@@ -199,15 +198,15 @@
 							<td>GPA</td>
 						</tr>
 						<tr>
-							<td><input class="border" style="width: 85%;"></input></td>
-							<td><input class="border" style="width: 85%;"></input></td>
-							<td><input class="border" style="width: 83%;"></input></td>
+							<td><input class="border" style="width: 85%;" id="toefl"></input></td>
+							<td><input class="border" style="width: 85%;" id="sat"></input></td>
+							<td><input class="border" style="width: 83%;" id="gpa"></input></td>
 						</tr>
 						<tr>
 							<td colspan="3">其他考试</td>
 						</tr>
 						<tr>
-							<td colspan="3"><input class="border" style="width: 83%"></input></td>
+							<td colspan="3"><input class="border" style="width: 83%" id="other"></input></td>
 						</tr>
 					</table>
 				</div>
@@ -228,7 +227,7 @@
 							<p class="lead"></p>
 							<textarea
 								class="border" style="width: 83%; height: 150px"
-								placeholder="(200+字/words)"></textarea>
+								placeholder="(200+字/words)" id="intro"></textarea>
 					</div>
 					<div class="margin-top">
 						<p>2.你为何选择申请College Pal？你最希望从College Pal 课程里学到些什么？</p>
@@ -236,7 +235,7 @@
 						<p class="lead"></p>
 							<textarea
 								class="border" style="width: 83%; height: 150px"
-								placeholder="(200+字/words)"></textarea>
+								placeholder="(200+字/words)" id="whycollegle"></textarea>
 					</div>
 					<div class="margin-top">
 						<p>3.请描述一下你的出国计划。你为何出国留学？何时开始准备的？</p>
@@ -245,26 +244,43 @@
 						<p class="lead"></p>
 						<div>
 							<textarea class="border" style="width: 83%; height: 150px;"
-								placeholder="(200+字/words)"> </textarea>
+								placeholder="(200+字/words)" id="whyabroad"> </textarea>
 						</div>
 					</div>
 				</div>
 	<script type="text/javascript">
-		AV.initialize("3QC7Tly4gWQOmNXBJCvUHi4B", "VFgm6lKUfvsC1P7BwzqOnYTp");
-		var TestObject = AV.Object.extend("_File");
-		var testObject = new TestObject();
-			testObject.save({email: "245367723@qq.com"}, {
-  				success: function(object) {
- 			 alert("LeanCloud works!");
- 		 	}
-		});
+	AV.initialize("3QC7Tly4gWQOmNXBJCvUHi4B", "VFgm6lKUfvsC1P7BwzqOnYTp");
+		function upload(){
+			var TestObject = AV.Object.extend("Record");
+			var testObject = new TestObject();
+				testObject.save({
+					email:$("#email").val(),
+					sex:$("#sex").val(),
+					school:$("#school").val(),
+					whyColleglePal:$("#whycollegle").val(),
+					whyabroad:$("#whyabroad").val(),
+					birthday:$("#birthday").val(),
+					firstName:$("#ftName").val(),
+					lastName:$("#ltName").val(),
+					otherexam:$("#other").val(),
+					grade:$("#grade").val(),
+					toefl:$("#toefl").val(),
+					introduction:$("#intro").val(),
+					gpa:$("#gpa").val(),
+					toefl:$("#toefl").val()}, {
+	  				success: function(object) {
+	 			 		alert("提交成功!");
+	 		 	} ,error: function(object, error) {
+    					alert(error.text());
+  				}
+			});
+		}
 	</script>
 		<div class="row featurette" style="text-align:center;margin-top:50px;width:100%">
 			<button style="width:200px;height:50px;" class="btn btn-primary">提交</button>
 		</div>
 	</div>
 		</div>		
-	</form>
 	<hr class="featurette-divider" class="border0"//>
 	<p class="lead"></p>
 	<p class="lead"></p>
