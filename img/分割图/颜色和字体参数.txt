@@ -1,0 +1,13 @@
+名片背景颜色参数
+001 红色 de3f44
+002 蓝色 2854fa
+003 紫色 ab2cfb
+
+
+字体参数
+Helvetica Neue LT pro 55 Roman
+老师名字大小  12pt
+
+Hi! / Hello Everybody ! / Hello !         14pt
+
+其余文字大小   10pt
